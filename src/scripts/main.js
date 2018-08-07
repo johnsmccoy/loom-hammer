@@ -16,7 +16,12 @@ renderNavBar().then(html => {
     document.querySelector("#navigation").innerHTML = html
     document.querySelector("#navbar").addEventListener("click", event => {
         const typeClickedOn = parseInt(event.target.id.split("--")[1])
-        renderProductList(typeClickedOn)
+        if (typeClickedOn === 4) {
+            renderForm("#container", saveProduct)
+        }
+        else {
+            renderProductList(typeClickedOn)
+        }
     })
 })
 // renderProductList()

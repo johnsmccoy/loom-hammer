@@ -9,9 +9,23 @@ let instructions = null
         button is clicked
 */
 const addListener = () => {
-    document.querySelector(".btn--saveProduct")
-        .addEventListener("click", instructions)
+    document.querySelector(".btn--saveProduct").addEventListener("click", () => {
+        const product = {}
+        product.name = document.querySelector("#productName").value
+        product.description = document.querySelector("#productDescription").value
+        product.price = parseFloat(document.querySelector("#productPrice").value)
+        product.quantity = parseInt(document.querySelector("#productQuantity").value)
+        product.type = parseInt(document.querySelector("#productType").value)
+
+        console.log(product)
+
+        DataManager.saveProduct(product)
+            .then(() =>
+                renderProductList(null)
+            )
+    })
 }
+
 
 /*
     Purpose: Build the product form component
